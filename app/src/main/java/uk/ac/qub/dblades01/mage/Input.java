@@ -9,15 +9,15 @@ public interface Input {
     }
 
     class TouchEvent {
-        public static final int TOUCH_DOWN = 0, TOUCH_UP = 1, TOUCH_DRAG = 2;
-        public int type, x, y, pointer;
+        public static final int TOUCH_DOWN = 0, TOUCH_DRAG = 1, TOUCH_UP = 2;
+        public int type, x, y, pointerId;
     }
 
     boolean isKeyDown(int keyCode);
 
-    int getTouchX(int pointer);
-    int getTouchY(int pointer);
-    boolean isTouchDown(int pointer);
+    int getTouchX(int pointerId);
+    int getTouchY(int pointerId);
+    boolean isTouchDown(int pointerId);
 
     float getAccelX();
     float getAccelY();

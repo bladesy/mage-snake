@@ -78,8 +78,8 @@ public class KeyboardHandler implements OnKeyListener {
             keyEvents.clear();
             keyEvents.addAll(keyEventsBuffer);
             keyEventsBuffer.clear();
-
-            return keyEvents;
         }
+
+        return keyEvents;
     }
 }
