@@ -15,8 +15,7 @@ public interface Graphics {
     void drawLine(int firstX, int firstY, int secondX, int secondY, int colour);
     void drawRectangle(int x, int y, int width, int height, int colour);
 
-    Pixmap newPixmap(String assetName, PixmapFormat format);
+    Pixmap newPixmap(String bitmapName, PixmapFormat format);
     void drawPixmap(Pixmap pixmap, int x, int y);
-    void drawPixmap(Pixmap pixmap, int srcX, int srcY, int srcWidth, int srcHeight, int dstX,
-                    int dstY);
+    void drawPixmap(Pixmap pixmap, int srcX, int srcY, int dstX, int dstY, int width, int height);
 }
