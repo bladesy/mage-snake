@@ -20,8 +20,8 @@ public class SimpleGraphics implements Graphics {
     private Paint paint = new Paint();
     private Rect src = new Rect(), dst = new Rect();
 
-    /* Pass in the frameBuffer Bitmap for canvas to draw on, along with the assetManager for
-    creating Pixmaps */
+    /* Pass in the assetManager for creating Pixmaps, along with the frameBuffer Bitmap for canvas
+    to draw on. */
     public SimpleGraphics(AssetManager assetManager, Bitmap frameBuffer) {
         this.assetManager = assetManager;
         this.frameBuffer = frameBuffer;
