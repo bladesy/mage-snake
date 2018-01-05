@@ -1,5 +1,6 @@
-package uk.ac.qub.dblades01.mage;
+package uk.ac.qub.dblades01.mage.audio;
 
+/* Describes an audio source being streamed through a MediaPlayer. */
 public interface Music {
     void play();
     void pause();

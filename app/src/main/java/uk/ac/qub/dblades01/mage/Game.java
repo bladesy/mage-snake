@@ -9,6 +9,15 @@ import android.util.DisplayMetrics;
 
 import android.view.WindowManager;
 
+import uk.ac.qub.dblades01.mage.audio.Audio;
+import uk.ac.qub.dblades01.mage.audio.SimpleAudio;
+import uk.ac.qub.dblades01.mage.graphics.Graphics;
+import uk.ac.qub.dblades01.mage.graphics.SimpleGraphics;
+import uk.ac.qub.dblades01.mage.input.Input;
+import uk.ac.qub.dblades01.mage.input.SimpleInput;
+import uk.ac.qub.dblades01.mage.io.FileIO;
+import uk.ac.qub.dblades01.mage.io.SimpleFileIO;
+
 public abstract class Game extends AppCompatActivity {
     FastRenderView fastRenderView;
     FileIO fileIO;
