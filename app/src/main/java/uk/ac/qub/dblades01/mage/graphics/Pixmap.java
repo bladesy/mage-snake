@@ -2,17 +2,19 @@ package uk.ac.qub.dblades01.mage.graphics;
 
 import android.graphics.Bitmap;
 
-/* Describes an image file */
+import uk.ac.qub.dblades01.mage.graphics.Graphics.PixmapFormat;
+
+/* Describes an image file. */
 public interface Pixmap {
-    /* Get the dimensions of the image */
+    /* Return the dimensions of the image. */
     int getWidth();
     int getHeight();
 
-    /* Get the internal Bitmap that stores the image data */
+    /* Return the internal Bitmap that stores the image data. */
     Bitmap getBitmap();
-    /*  Get the format that each pixel consists of */
-    Graphics.PixmapFormat getFormat();
+    /* Return the format that each pixel consists of. */
+    PixmapFormat getFormat();
 
-    /* Remove the image from memory and use */
+    /* Remove this Pixmap use. */
     void dispose();
 }
