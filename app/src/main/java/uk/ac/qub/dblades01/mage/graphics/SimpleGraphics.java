@@ -42,7 +42,7 @@ public class SimpleGraphics implements Graphics {
     /* Clear the drawable area with the passed in colour at full opacity. */
     @Override
     public void clear(int colour) {
-        canvas.drawColor(colour & 0x00ffffff);
+        canvas.drawColor(colour | 0xff000000);
     }
 
     /* Draw a pixel at (x, y) of the passed in colour. */
