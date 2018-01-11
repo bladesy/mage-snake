@@ -62,8 +62,8 @@ public abstract class Game extends AppCompatActivity {
         displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         /* Calculate to which scale frameBuffer is in comparison to the actual display. */
-        scaleX = frameBufferWidth / displayMetrics.widthPixels;
-        scaleY = frameBufferHeight / displayMetrics.heightPixels;
+        scaleX = (float) frameBufferWidth / displayMetrics.widthPixels;
+        scaleY = (float) frameBufferHeight / displayMetrics.heightPixels;
 
         /* Instantiate subsystems. */
         fastRenderView = new FastRenderView(this, frameBuffer);

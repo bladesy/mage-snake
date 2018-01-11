@@ -10,7 +10,11 @@ public class LoadingScreen extends Screen {
     /* game is the Game object that this Screen acts as a section of. */
     public LoadingScreen(Game game) {
         super(game);
+    }
 
+    /* Update components. */
+    @Override
+    public void update(float deltaTime) {
         Graphics graphics;
         Audio audio;
 
@@ -29,12 +33,6 @@ public class LoadingScreen extends Screen {
 
         /* Move on to the next screen. */
         game.setScreen(new MenuScreen(game));
-    }
-
-    /* Update components. */
-    @Override
-    public void update(float deltaTime) {
-
     }
 
     /* Draw components to the frame buffer. */

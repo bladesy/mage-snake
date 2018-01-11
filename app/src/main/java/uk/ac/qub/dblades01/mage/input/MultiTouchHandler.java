@@ -112,7 +112,8 @@ public class MultiTouchHandler implements TouchHandler {
                 into the resolution of the frame buffer. */
                 touchEvent.x = touchX[i] = (int) (motionEvent.getX(i) * scaleX);
                 touchEvent.y = touchY[i] = (int) (motionEvent.getY(i) * scaleY);
-                /* Store the pointer id associated with the pointer index i in the new TouchEvent. */
+                /* Store the pointer id associated with the pointer index i in the new
+                TouchEvent. */
                 touchEvent.pointerId = motionPointerId;
 
                 touchEventsBuffer.add(touchEvent);
