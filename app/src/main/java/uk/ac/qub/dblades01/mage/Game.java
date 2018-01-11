@@ -22,12 +22,12 @@ import uk.ac.qub.dblades01.mage.io.SimpleFileIO;
 Extends AppCompatActivity to act as the entry point into the application, and provide context to any
 subsystem. */
 public abstract class Game extends AppCompatActivity {
-    FastRenderView fastRenderView;
-    FileIO fileIO;
-    Audio audio;
-    Input input;
-    Graphics graphics;
-    Screen screen;
+    private FastRenderView fastRenderView;
+    private FileIO fileIO;
+    private Audio audio;
+    private Input input;
+    private Graphics graphics;
+    private Screen screen;
 
     /* The extending class becomes an actual Game when it specifies the first Screen to use. */
     public abstract Screen getStartScreen();
