@@ -27,6 +27,8 @@ public class LoadingScreen extends Screen {
         Assets.play = graphics.newPixmap("images/play.png", PixmapFormat.RGB565);
         Assets.highscores = graphics.newPixmap("images/highscores.png", PixmapFormat.RGB565);
         Assets.help = graphics.newPixmap("images/help.png", PixmapFormat.RGB565);
+        Assets.mute = graphics.newPixmap("images/mute.png", PixmapFormat.RGB565);
+        Assets.unmute = graphics.newPixmap("images/unmute.png", PixmapFormat.RGB565);
 
         /* Load Sound assets. */
         Assets.click = audio.newSound("audio/click.wav");

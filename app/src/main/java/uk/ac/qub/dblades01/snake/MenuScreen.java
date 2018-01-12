@@ -27,19 +27,24 @@ public class MenuScreen extends Screen {
         for(TouchEvent touchEvent : touchEvents) {
             if(touchEvent.type == TouchEvent.TOUCH_UP) {
                 if(touchInBounds(touchEvent, 40, 200, 240, 80)) {
+                    game.setScreen(new GameScreen(game));
                     if(Settings.soundEnabled)
                         Assets.click.play(1);
-                    game.setScreen(new GameScreen(game));
                 }
                 else if(touchInBounds(touchEvent, 40, 280, 240, 80)) {
+                    game.setScreen(new ScoreScreen(game));
                     if(Settings.soundEnabled)
                         Assets.click.play(1);
-                    game.setScreen(new ScoreScreen(game));
                 }
                 else if(touchInBounds(touchEvent, 40, 360, 240, 80)) {
+                    game.setScreen(new HelpScreen(game));
                     if(Settings.soundEnabled)
                         Assets.click.play(1);
-                    game.setScreen(new HelpScreen(game));
+                }
+                else if(touchInBounds(touchEvent, 0, 440, 40, 480)) {
+                    Settings.soundEnabled = !Settings.soundEnabled;
+                    if(Settings.soundEnabled)
+                        Assets.click.play(1);
                 }
             }
         }
@@ -57,6 +62,11 @@ public class MenuScreen extends Screen {
         graphics.drawPixmap(Assets.play, 40, 200);
         graphics.drawPixmap(Assets.highscores, 40, 280);
         graphics.drawPixmap(Assets.help, 40, 360);
+
+        if(Settings.soundEnabled)
+            graphics.drawPixmap(Assets.mute, 0, 440);
+        else
+            graphics.drawPixmap(Assets.unmute, 0, 440);
     }
 
     /* Set up. */

@@ -8,6 +8,8 @@ public class Assets {
         title,
         play,
         highscores,
-        help;
+        help,
+        mute,
+        unmute;
     public static Sound click;
 }
