@@ -67,13 +67,13 @@ public class Settings {
     }
 
     public static void addScore(int score) {
-        for(int i = 0; i < 5; ++i) {
-            if(highscores[i] < score) {
-                for(int j = 3; j > i; --j)
-                    highscores[j] = highscores[j + 1];
+        for(int i = 0; i < 5; ++i)
+            if(score > highscores[i]) {
+                for(int j = 3; j >= i; --j)
+                    highscores[j + 1] = highscores[j];
+
                 highscores[i] = score;
                 break;
             }
-        }
     }
 }

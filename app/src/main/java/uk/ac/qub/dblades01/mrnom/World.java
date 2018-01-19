@@ -57,6 +57,8 @@ public class World {
     }
 
     public void update(float deltaTime) {
+        boolean tickDecremented;
+
         if(gameEnded)
             return;
 
@@ -88,7 +90,7 @@ public class World {
             }
 
             if(score % 100 == 0 && tick - TICK_DECREMENT > 0)
-                tick -= TICK_DECREMENT;
+                tick = TICK_INTIAL - (TICK_DECREMENT * (score / 100));
         }
     }
 }

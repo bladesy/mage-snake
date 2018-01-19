@@ -27,7 +27,11 @@ public class Assets {
         ink3,
         numbers,
         ready,
-        gameOver;
+        pause,
+        resume,
+        quit,
+        gameOver,
+        cancel;
     public static Sound click,
         bite,
         splash;

@@ -45,7 +45,11 @@ public class LoadingScreen extends Screen {
         Assets.ink3 = graphics.newPixmap("images/ink3.png", PixmapFormat.RGB565);
         Assets.numbers = graphics.newPixmap("images/numbers.png", PixmapFormat.RGB565);
         Assets.ready = graphics.newPixmap("images/ready.png", PixmapFormat.RGB565);
+        Assets.pause = graphics.newPixmap("images/pause.png", PixmapFormat.RGB565);
+        Assets.resume = graphics.newPixmap("images/resume.png", PixmapFormat.RGB565);
+        Assets.quit = graphics.newPixmap("images/quit.png", PixmapFormat.RGB565);
         Assets.gameOver = graphics.newPixmap("images/gameOver.png", PixmapFormat.RGB565);
+        Assets.cancel = graphics.newPixmap("images/cancel.png", PixmapFormat.RGB565);
 
         /* Load Sound assets. */
         Assets.click = audio.newSound("audio/click.wav");
