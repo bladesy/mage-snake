@@ -1,4 +1,4 @@
-package uk.ac.qub.dblades01.snake;
+package uk.ac.qub.dblades01.mrnom;
 
 import uk.ac.qub.dblades01.mage.Game;
 import uk.ac.qub.dblades01.mage.Screen;
@@ -29,9 +29,28 @@ public class LoadingScreen extends Screen {
         Assets.help = graphics.newPixmap("images/help.png", PixmapFormat.RGB565);
         Assets.mute = graphics.newPixmap("images/mute.png", PixmapFormat.RGB565);
         Assets.unmute = graphics.newPixmap("images/unmute.png", PixmapFormat.RGB565);
+        Assets.ruleHeading = graphics.newPixmap("images/ruleHeading.png", PixmapFormat.RGB565);
+        Assets.rule1 = graphics.newPixmap("images/rule1.png", PixmapFormat.RGB565);
+        Assets.rule2 = graphics.newPixmap("images/rule2.png", PixmapFormat.RGB565);
+        Assets.rule3 = graphics.newPixmap("images/rule3.png", PixmapFormat.RGB565);
+        Assets.arrowLeft = graphics.newPixmap("images/arrowLeft.png", PixmapFormat.RGB565);
+        Assets.arrowRight = graphics.newPixmap("images/arrowRight.png", PixmapFormat.RGB565);
+        Assets.headLeft = graphics.newPixmap("images/headLeft.png", PixmapFormat.RGB565);
+        Assets.headRight = graphics.newPixmap("images/headRight.png", PixmapFormat.RGB565);
+        Assets.headUp = graphics.newPixmap("images/headUp.png", PixmapFormat.RGB565);
+        Assets.headDown = graphics.newPixmap("images/headDown.png", PixmapFormat.RGB565);
+        Assets.tail = graphics.newPixmap("images/tail.png", PixmapFormat.RGB565);
+        Assets.ink1 = graphics.newPixmap("images/ink1.png", PixmapFormat.RGB565);
+        Assets.ink2 = graphics.newPixmap("images/ink2.png", PixmapFormat.RGB565);
+        Assets.ink3 = graphics.newPixmap("images/ink3.png", PixmapFormat.RGB565);
+        Assets.numbers = graphics.newPixmap("images/numbers.png", PixmapFormat.RGB565);
+        Assets.ready = graphics.newPixmap("images/ready.png", PixmapFormat.RGB565);
+        Assets.gameOver = graphics.newPixmap("images/gameOver.png", PixmapFormat.RGB565);
 
         /* Load Sound assets. */
         Assets.click = audio.newSound("audio/click.wav");
+        Assets.bite = audio.newSound("audio/bite.wav");
+        Assets.splash = audio.newSound("audio/splash.wav");
 
         /* Move on to the next screen. */
         game.setScreen(new MenuScreen(game));

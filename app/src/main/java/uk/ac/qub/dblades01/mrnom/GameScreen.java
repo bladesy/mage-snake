@@ -1,12 +1,27 @@
-package uk.ac.qub.dblades01.snake;
+package uk.ac.qub.dblades01.mrnom;
 
 import uk.ac.qub.dblades01.mage.Game;
 import uk.ac.qub.dblades01.mage.Screen;
 
-public class HelpScreen extends Screen {
+public class GameScreen extends Screen {
+    private enum GameState {
+        READY,
+        RUNNING,
+        PAUSED,
+        GAME_OVER;
+    }
+
+    int score;
+    GameState state;
+    World world;
+
     /* game is the Game object that this Screen acts as a section of. */
-    public HelpScreen(Game game) {
+    public GameScreen(Game game) {
         super(game);
+
+        score = 0;
+        state = GameState.READY;
+        world = new World();
     }
 
     /* Update components. */
