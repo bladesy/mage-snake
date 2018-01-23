@@ -1,4 +1,4 @@
-package uk.ac.qub.dblades01.mrnom;
+package uk.ac.qub.dblades01.mrnom.model;
 
 import java.util.Random;
 
@@ -25,6 +25,7 @@ public class World {
         placeInk();
     }
 
+    /* Replace ink with a new Ink instance of different position in the World. */
     private void placeInk() {
         int inkX, inkY;
 
@@ -56,9 +57,9 @@ public class World {
         ink = new Ink(random.nextInt(3), inkX, inkY);
     }
 
+    /* Update the World based on deltaTime being the time in seconds since the last update. This
+    World update should keep its state up to date, and keep snake and ink moving. */
     public void update(float deltaTime) {
-        boolean tickDecremented;
-
         if(gameEnded)
             return;
 

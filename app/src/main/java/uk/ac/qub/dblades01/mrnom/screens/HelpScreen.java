@@ -1,4 +1,4 @@
-package uk.ac.qub.dblades01.mrnom;
+package uk.ac.qub.dblades01.mrnom.screens;
 
 import java.util.List;
 
@@ -7,7 +7,10 @@ import uk.ac.qub.dblades01.mage.Screen;
 import uk.ac.qub.dblades01.mage.graphics.Graphics;
 import uk.ac.qub.dblades01.mage.input.Input;
 import uk.ac.qub.dblades01.mage.input.Input.TouchEvent;
+import uk.ac.qub.dblades01.mrnom.Assets;
+import uk.ac.qub.dblades01.mrnom.Settings;
 
+/* Illustrates the various rules to the game, allowing switching back and forth between rules. */
 public class HelpScreen extends Screen {
     private int currentRule;
 
@@ -18,7 +21,7 @@ public class HelpScreen extends Screen {
         currentRule = 0;
     }
 
-    /* Update components. */
+    /* Handle button presses. */
     @Override
     public void update(float deltaTime) {
         Input input;
@@ -44,7 +47,7 @@ public class HelpScreen extends Screen {
         }
     }
 
-    /* Draw components to the frame buffer. */
+    /* Draw the illustration for the current rule. */
     @Override
     public void draw(float deltaTime) {
         Graphics graphics;
@@ -72,19 +75,15 @@ public class HelpScreen extends Screen {
         }
     }
 
-    /* Set up. */
+    /* Necessary overrides. */
     @Override
     public void resume() {
 
     }
-
-    /* Clean up. */
     @Override
     public void pause() {
 
     }
-
-    /* Remove this Screen from use. */
     @Override
     public void dispose() {
 
@@ -99,10 +98,12 @@ public class HelpScreen extends Screen {
         return false;
     }
 
+    /* Return the modulo between expression and modulus. */
     private int modulo(int expression, int modulus) {
         return ((expression % modulus) + modulus) % modulus;
     }
 
+    /* Draw the first rule. */
     private void drawRule1(Graphics graphics) {
         graphics.drawPixmap(Assets.rule1, 40, 320);
         graphics.drawPixmap(Assets.ink1, 80, 120);
@@ -116,6 +117,7 @@ public class HelpScreen extends Screen {
         graphics.drawPixmap(Assets.tail, 120, 240);
     }
 
+    /* Draw the second rule. */
     private void drawRule2(Graphics graphics) {
         graphics.drawPixmap(Assets.rule2, 40, 320);
         graphics.drawPixmap(Assets.headDown, 120, 200);
@@ -132,6 +134,7 @@ public class HelpScreen extends Screen {
         graphics.drawPixmap(Assets.tail, 40, 240);
     }
 
+    /* Draw the third rule. */
     private void drawRule3(Graphics graphics) {
         graphics.drawPixmap(Assets.rule3, 40, 320);
         graphics.drawPixmap(Assets.tail, 40, 160);

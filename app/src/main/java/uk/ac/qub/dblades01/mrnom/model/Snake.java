@@ -1,8 +1,9 @@
-package uk.ac.qub.dblades01.mrnom;
+package uk.ac.qub.dblades01.mrnom.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/* Controlled by the user, inorder to move around the World and eat Ink. */
 public class Snake {
     public static final int UP = 0, LEFT = 1, DOWN = 2, RIGHT = 3;
     public int direction;
@@ -17,14 +18,22 @@ public class Snake {
         parts.add(new SnakePart(5, 7));
     }
 
+    /* Return the modulo between expression and modulus. */
+    private int modulo(int expression, int modulus) {
+        return ((expression % modulus) + modulus) % modulus;
+    }
+
+    /* Turn the direction that Snake will move, 90 degrees to the left of its current direction. */
     public void turnLeft() {
         direction = modulo(direction + 1, 4);
     }
 
+    /* Turn the direction that Snake will move, 90 degrees to the right of its current direction. */
     public void turnRight() {
         direction = modulo(direction - 1, 4);
     }
 
+    /* Grows Snake by one SnakePart - this should be called when Snake eats Ink. */
     public void eat() {
         SnakePart lastPart;
 
@@ -33,6 +42,8 @@ public class Snake {
         parts.add(new SnakePart(lastPart.x, lastPart.y));
     }
 
+    /* Move the Snake in the current direction, with each SnakePart moving into the position of the
+    next SnakePart. */
     public void move() {
         int snakeLength;
         SnakePart head;
@@ -66,6 +77,7 @@ public class Snake {
         }
     }
 
+    /* Return whether or not the head SnakePart of the Snake has collided with its tail. */
     public boolean isBitten() {
         int snakeLength;
         SnakePart head;
@@ -83,9 +95,5 @@ public class Snake {
         }
 
         return false;
-    }
-
-    private int modulo(int expression, int modulus) {
-        return ((expression % modulus) + modulus) % modulus;
     }
 }

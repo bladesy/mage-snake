@@ -3,6 +3,7 @@ package uk.ac.qub.dblades01.mrnom;
 import uk.ac.qub.dblades01.mage.audio.Sound;
 import uk.ac.qub.dblades01.mage.graphics.Pixmap;
 
+/* Provides access to the game assets. */
 public class Assets {
     public static Pixmap background,
         title,

@@ -1,18 +1,23 @@
-package uk.ac.qub.dblades01.mrnom;
+package uk.ac.qub.dblades01.mrnom.screens;
 
 import uk.ac.qub.dblades01.mage.Game;
 import uk.ac.qub.dblades01.mage.Screen;
 import uk.ac.qub.dblades01.mage.audio.Audio;
 import uk.ac.qub.dblades01.mage.graphics.Graphics;
 import uk.ac.qub.dblades01.mage.graphics.Graphics.PixmapFormat;
+import uk.ac.qub.dblades01.mrnom.Assets;
+import uk.ac.qub.dblades01.mrnom.Settings;
 
+/* Loads all of the game assets before any other screen is ran - therefore, it must be the start
+screen. */
 public class LoadingScreen extends Screen {
     /* game is the Game object that this Screen acts as a section of. */
     public LoadingScreen(Game game) {
         super(game);
     }
 
-    /* Update components. */
+    /* This update should load all of the assets into Assets, only being called once before the
+    MenuScreen is set. */
     @Override
     public void update(float deltaTime) {
         Graphics graphics;
@@ -56,28 +61,25 @@ public class LoadingScreen extends Screen {
         Assets.bite = audio.newSound("audio/bite.wav");
         Assets.splash = audio.newSound("audio/splash.wav");
 
+        /* Load Settings. */
+        Settings.load(game.getFileIO());
+
         /* Move on to the next screen. */
         game.setScreen(new MenuScreen(game));
     }
 
-    /* Draw components to the frame buffer. */
+    /* Necessary overrides. */
     @Override
     public void draw(float deltaTime) {
     }
-
-    /* Set up. */
     @Override
     public void resume() {
 
     }
-
-    /* Clean up. */
     @Override
     public void pause() {
 
     }
-
-    /* Remove this Screen from use. */
     @Override
     public void dispose() {
 

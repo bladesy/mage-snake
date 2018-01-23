@@ -39,10 +39,10 @@ public class SimpleGraphics implements Graphics {
         return frameBuffer.getHeight();
     }
 
-    /* Clear the drawable area with the passed in colour at full opacity. */
+    /* Clear the drawable area with the passed in colour. */
     @Override
     public void clear(int colour) {
-        canvas.drawColor(colour | 0xff000000);
+        canvas.drawColor(colour);
     }
 
     /* Draw a pixel at (x, y) of the passed in colour. */

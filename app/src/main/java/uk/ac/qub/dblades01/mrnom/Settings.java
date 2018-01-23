@@ -8,10 +8,13 @@ import java.io.OutputStreamWriter;
 
 import uk.ac.qub.dblades01.mage.io.FileIO;
 
+/* Stores the user settings and scores, along with being responsible for updating these settings and
+scores. */
 public class Settings {
     public static boolean soundEnabled = true;
     public static int[] highscores = { 100, 80, 50, 30, 10 };
 
+    /* Load in previously saved settings through fileIO. */
     public static void load(FileIO fileIO) {
         BufferedReader reader;
 
@@ -39,7 +42,8 @@ public class Settings {
         }
     }
 
-    public static void write(FileIO fileIO) {
+    /* Save the current settings through fileIO. */
+    public static void save(FileIO fileIO) {
         BufferedWriter writer;
 
         writer = null;
@@ -48,8 +52,10 @@ public class Settings {
             writer = new BufferedWriter(new OutputStreamWriter(fileIO.writeFile(".mrnom")));
             writer.write(Boolean.toString(soundEnabled));
 
-            for(int i = 0; i < 5; ++i)
+            for(int i = 0; i < 5; ++i) {
+                writer.newLine();
                 writer.write(Integer.toString(highscores[i]));
+            }
         }
         catch(IOException e) {
             e.printStackTrace();
@@ -66,6 +72,7 @@ public class Settings {
         }
     }
 
+    /* Attempt to add score to the highscores array. */
     public static void addScore(int score) {
         for(int i = 0; i < 5; ++i)
             if(score > highscores[i]) {

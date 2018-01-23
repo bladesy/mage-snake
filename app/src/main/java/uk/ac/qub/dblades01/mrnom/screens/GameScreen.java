@@ -1,4 +1,4 @@
-package uk.ac.qub.dblades01.mrnom;
+package uk.ac.qub.dblades01.mrnom.screens;
 
 import java.util.List;
 
@@ -8,8 +8,14 @@ import uk.ac.qub.dblades01.mage.graphics.Graphics;
 import uk.ac.qub.dblades01.mage.graphics.Pixmap;
 import uk.ac.qub.dblades01.mage.input.Input;
 import uk.ac.qub.dblades01.mage.input.Input.TouchEvent;
+import uk.ac.qub.dblades01.mrnom.Assets;
+import uk.ac.qub.dblades01.mrnom.Settings;
+import uk.ac.qub.dblades01.mrnom.model.SnakePart;
+import uk.ac.qub.dblades01.mrnom.model.World;
 
+/* Runs the actual game. */
 public class GameScreen extends Screen {
+    /*  */
     private enum GameState {
         READY,
         RUNNING,
@@ -28,7 +34,7 @@ public class GameScreen extends Screen {
         world = new World();
     }
 
-    /* Update components. */
+    /* Redirect to the update method for the current state. */
     @Override
     public void update(float deltaTime) {
         Input input;
@@ -54,7 +60,7 @@ public class GameScreen extends Screen {
         }
     }
 
-    /* Draw components to the frame buffer. */
+    /* Redirect to the update method for the current state. */
     @Override
     public void draw(float deltaTime) {
         Graphics graphics;
@@ -83,10 +89,17 @@ public class GameScreen extends Screen {
 
     }
 
-    /* Clean up. */
+    /* Change state to pause the game if it is currently running, and save the scores if the game
+    has ended. */
     @Override
     public void pause() {
+        if(state == GameState.RUNNING)
+            state = GameState.PAUSED;
 
+        if(world.gameEnded) {
+            Settings.addScore(world.score);
+            Settings.save(game.getFileIO());
+        }
     }
 
     /* Remove this Screen from use. */
@@ -104,17 +117,20 @@ public class GameScreen extends Screen {
         return false;
     }
 
+    /* Draw number with top-left position at World coordinates (x, y), using graphics. */
     private void drawNumber(int number, int x, int y, Graphics graphics) {
         graphics.drawPixmap(Assets.numbers, 40 * number, 0, x, y, 40, 40);
     }
 
+    /* Draw score where its position on the scoreboard is place, using graphics. */
     private void drawScore(int score, int x, int y, Graphics graphics) {
-        for(int i = 0; i < 4 && score > 0; ++i) {
+        for(int i = 0; i < 4; ++i) {
             drawNumber(score % 10, x - (i * 40), y, graphics);
             score /= 10;
         }
     }
 
+    /* Handle button presses of the ready state. */
     private void updateReady(List<TouchEvent> touchEvents) {
         for(TouchEvent touchEvent : touchEvents)
             if(touchEvent.type == TouchEvent.TOUCH_UP)
@@ -122,6 +138,7 @@ public class GameScreen extends Screen {
                     state = GameState.RUNNING;
     }
 
+    /* Handle button presses of the running state, and keep the world updated. */
     private void updateRunning(float deltaTime, List<TouchEvent> touchEvents) {
         for(TouchEvent touchEvent : touchEvents) {
             if(touchEvent.type == TouchEvent.TOUCH_UP) {
@@ -140,6 +157,7 @@ public class GameScreen extends Screen {
             state = GameState.GAME_OVER;
     }
 
+    /* Handle button presses of the paused state. */
     private void updatePaused(List<TouchEvent> touchEvents) {
         for(TouchEvent touchEvent : touchEvents) {
             if(touchEvent.type == TouchEvent.TOUCH_UP) {
@@ -151,19 +169,22 @@ public class GameScreen extends Screen {
         }
     }
 
+    /* Handle button presses of the game over state. */
     private void updateGameOver(List<TouchEvent> touchEvents) {
         for(TouchEvent touchEvent : touchEvents)
             if(touchEvent.type == TouchEvent.TOUCH_UP)
-                if(touchInBounds(touchEvent, 0, 440, 40, 40)) {
-                    Settings.addScore(world.score);
+                if(touchInBounds(touchEvent, 0, 440, 40, 40))
                     game.setScreen(new MenuScreen(game));
-                }
     }
 
+    /* Draw the button of the ready state. */
     private void drawReady(Graphics graphics) {
+        drawRunning(graphics);
+        graphics.clear(0x66000000);
         graphics.drawPixmap(Assets.ready, 40, 200);
     }
 
+    /* Draw world and the buttons of the running state.  */
     private void drawRunning(Graphics graphics) {
         Pixmap ink;
 
@@ -172,7 +193,7 @@ public class GameScreen extends Screen {
         graphics.drawPixmap(Assets.arrowRight, 280, 440);
         graphics.drawPixmap(Assets.pause, 0, 0);
 
-        drawScore(world.score, 80, 440, graphics);
+        drawScore(world.score, 200, 440, graphics);
 
         switch(world.ink.type) {
             default:
@@ -218,12 +239,18 @@ public class GameScreen extends Screen {
         }
     }
 
+    /* Draw the buttons of the paused state. */
     private void drawPaused(Graphics graphics) {
+        drawRunning(graphics);
+        graphics.clear(0x66000000);
         graphics.drawPixmap(Assets.resume, 40, 160);
         graphics.drawPixmap(Assets.quit, 40, 240);
     }
 
+    /* Draw the buttons of the game over state. */
     private void drawGameOver(Graphics graphics) {
+        drawRunning(graphics);
+        graphics.clear(0x66000000);
         graphics.drawPixmap(Assets.gameOver, 40, 200);
         graphics.drawPixmap(Assets.cancel, 0, 440);
     }
